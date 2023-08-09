@@ -47,6 +47,7 @@ https://oliverkieselbach.com/2021/07/14/comprehensive-guide-to-managing-macos-wi
 
 Release notes:
 Version 1.0: 2021-09-07 - Original published version.
+Version 1.1: 2023-08-09 - Added ? to the SAS string to make it easier to work with MDM profiles.
 
 Credits and many thanks to @MaxXyzzy for triggering me to evaluate the SAS version once again.
 
@@ -74,6 +75,6 @@ AZURE_ENDPOINT = pref('AzureEndpoint') or 'blob.core.windows.net'
 def process_request_options(options):
     # This is the fuction that munki calls.
     if AZURE_ENDPOINT in options['url']:
-        options['url'] = options['url'] + SHARED_ACCESS_SIGNATURE
+        options['url'] = options["url"] + "?" + SHARED_ACCESS_SIGNATURE
 
     return options
